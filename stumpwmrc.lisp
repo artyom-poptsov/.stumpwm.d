@@ -27,7 +27,7 @@ to the `DAEMON'."
 (run-daemon "urxvtd"       "-q -o -f &")
 (run-daemon "emacs"        "--daemon &")
 
-;; TODO: Ad tray for stumpwm.
+;; TODO: Add tray for stumpwm.
 ;(run-daemon "trayer"       "--SetDockType false --transparent true --expand false &")
 
 
