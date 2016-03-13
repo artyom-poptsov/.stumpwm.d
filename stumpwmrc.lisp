@@ -34,12 +34,12 @@ to the `DAEMON'."
 ;;; Groups
 
 ;; FIXME: Remove "Default" group.
-(run-commands "gnew 1"
-	      "gnew 2"
-	      "gnew 3"
-	      "gnew 4"
-	      "gnew T"			; Term
+(run-commands "gnew L"
+	      "gnew I"
+	      "gnew S"
+	      "gnew P"
 	      "gnew F"			; FS
+	      "gnew T"			; Term
 	      "gnew W")			; Web
 
 
