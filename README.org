@@ -1,0 +1,27 @@
+* avp's StumpWM Configuration
+  My [[https://stumpwm.github.io][StumpWM]] configuration.
+** Key bindings
+   As an active [[http://awesome.naquadah.org/][Awesome]] TWM user I struggle to have similar
+   keybindings for StumpWM to make simultaneous use of two different
+   WMs easier.
+
+   | Keybinding | Action                                    |
+   |------------+-------------------------------------------|
+   | s-f        | Switch current window to fullscreen mode. |
+   | s-j        | Switch to the next window.                |
+   | s-k        | Switch to the previous window.            |
+   | s-RET      | Open terminal (urxvt.)                    |
+   | s-e        | Start Emacs client.                       |
+   | C-s-l      | Lock the screen.                          |
+   | s-d        | Open dmenu.                               |
+   | s-1..8     | Go to the Nth group.                      |
+   | s-!        | Move current window to the 1st group.     |
+   | s-@        | .. to the 2nd group.                      |
+   | s-#        | .. to the 3rd group.                      |
+   | s-$        | .. to the 4th group.                      |
+   | s-%        | .. to the 5th group.                      |
+   | s-^        | .. to the 6th group.                      |
+   | s-&        | .. to the 7th group.                      |
+   | s-*        | .. to the 8th group.                      |
+
+   
