@@ -28,26 +28,27 @@ to the `DAEMON'."
 (run-daemon "emacs"        "--daemon &")
 
 ;; TODO: Add tray for stumpwm.
-;(run-daemon "trayer"       "--SetDockType false --transparent true --expand false &")
+;;(run-daemon "trayer"
+;;            "--SetDockType false --transparent true --expand false &")
 
 
 ;;; Groups
 
 ;; FIXME: Remove "Default" group.
 (run-commands "gnew L"
-	      "gnew I"
-	      "gnew S"
-	      "gnew P"
-	      "gnew F"			; FS
-	      "gnew T"			; Term
-	      "gnew W")			; Web
+              "gnew I"
+              "gnew S"
+              "gnew P"
+              "gnew F"                  ; FS
+              "gnew T"                  ; Term
+              "gnew W")                 ; Web
 
 
 ;;; Commands
 
 (defcommand portage/get-last-sync () ()
   (with-open-file (stream *portage-timestamp-file*)
-    (read-line stream nil)))
+                  (read-line stream nil)))
 
 ;; from http://en.wikipedia.org/wiki/User:Gwern/.stumpwmrc
 (defun cat (&rest strings)
@@ -77,19 +78,19 @@ to the `DAEMON'."
 (defun get-battery-stat ()
   (run-shell-command
    (concat
-   "acpitool -b "
-   "| cut -d ':' -f 2 "
-   "| awk -F '[,]' '{printf \"%s%s\", $1, $2}' "
-   "| sed s/Discharging/\-/ | sed s/Unknown// "
-   "| sed s/Full// "
-   "| sed s/Charging/+/")
+    "acpitool -b "
+    "| cut -d ':' -f 2 "
+    "| awk -F '[,]' '{printf \"%s%s\", $1, $2}' "
+    "| sed s/Discharging/\-/ | sed s/Unknown// "
+    "| sed s/Full// "
+    "| sed s/Charging/+/")
    t))
 
 (setf *screen-mode-line-format*
       (list "%g | %w ^>| "
-	    '("^7*" (:eval (get-battery-stat)))
-	    " "
-	    '("^7*" (:eval (time-format "%k:%M")))))
+            '("^7*" (:eval (get-battery-stat)))
+            " "
+            '("^7*" (:eval (time-format "%k:%M")))))
 
 (setf *mode-line-timeout*      3)
 (setf *mode-line-border-width* 0)
@@ -141,13 +142,13 @@ to the `DAEMON'."
 
 ;; Use Awesome style of switching between groups.
 (loop with keys = '("!" "@" "#" "$" "%" "^" "&" "*") for i from 1 to 8 do
-     (define-key *top-map* (kbd (cat "s-" (nth (- i 1) keys)))
-       (cat "gmove " (number->string i))))
+      (define-key *top-map* (kbd (cat "s-" (nth (- i 1) keys)))
+        (cat "gmove " (number->string i))))
 
 ;; Use Awesome style of moving windows between groups.
 (loop for i from 1 to 8 do
-     (define-key *top-map* (kbd (cat "s-" (number->string i)))
-       (cat "gselect " (number->string i))))
+      (define-key *top-map* (kbd (cat "s-" (number->string i)))
+        (cat "gselect " (number->string i))))
 
 
 ;;; Hooks
@@ -160,8 +161,8 @@ to the `DAEMON'."
   (declare (ignore key))
   (unless (eq *top-map* *resize-map*)
     (let ((*message-window-gravity* :bottom-right)
-	  ;; FIXME: It doesn't work.
-	  (*timeout-wait*           1))
+          ;; FIXME: It doesn't work.
+          (*timeout-wait*           1))
       (message "Key sequence: ~a" (print-key-seq (reverse key-seq))))
     (when (stringp cmd)
       ;; give 'em time to read it
@@ -174,6 +175,6 @@ to the `DAEMON'."
 
 ;; Uncomment this if you want to get notification with key sequence in
 ;; progress.
-;(replace-hook *key-press-hook* 'key-press-hook)
+;;(replace-hook *key-press-hook* 'key-press-hook)
 
 ;;; stumpwmrc.lisp ends here.
